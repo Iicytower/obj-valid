@@ -37,21 +37,24 @@ export default function createSchema() {
 
       if (prop === 'createSchema' || prop === 'checkSchema') break;
       
-
       const currentType = kindOf(obj[prop]);
       let count = 'idk';
 
       if (currentType instanceof Error) return currentType;
 
-      if(currentType === 'array'){
-        count = arrayChecking(obj[prop]);
-      }
-      else if(currentType === 'object'){
-        count = obj[prop].createSchema();
-      }else{
-        count = currentType;
-      }
-    
+      switch (currentType) {
+        case 'array':
+          count = arrayChecking(obj[prop]);
+          break;
+
+        case 'object':
+          count = obj[prop].createSchema();
+          break;
+
+        default:
+          count = currentType;
+          break;
+      }   
 
 
       res[prop] = count;
