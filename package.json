@@ -1,0 +1,24 @@
+{
+  "name": "isobjecthascorrectstructure",
+  "version": "0.0.1",
+  "description": "This package will add to Object prototype two functions Object.prototype.createSchema() and Object.prototype.checkSchema()",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon test.js",
+    "start": "nodemon index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iicytower/isObjectHasCorrectStructure.git"
+  },
+  "author": "Iicytower",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iicytower/isObjectHasCorrectStructure/issues"
+  },
+  "homepage": "https://github.com/Iicytower/isObjectHasCorrectStructure#readme",
+  "dependencies": {
+    "kind-of": "^6.0.3"
+  }
+}
