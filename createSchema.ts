@@ -1,6 +1,7 @@
 import kindOf from 'kind-of';
 
-export default function createSchema(baseObj: any, ) {
+export function createSchema(baseObj: any, ) {
+
   const arrayChecking = (arr: any[]): string | Object | Error => {
     function allSameType(item: any): boolean {
       return new Set(item.map((x: any) => typeof x)).size <= 1;
@@ -60,5 +61,6 @@ export default function createSchema(baseObj: any, ) {
     
     return res;
   };
+  
   return mainLoop(baseObj);
 }

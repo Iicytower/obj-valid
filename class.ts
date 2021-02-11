@@ -1,8 +1,8 @@
-import createSchema from './createSchema';
-import checkSchema from './checkSchema';
+import {createSchema} from './createSchema';
+import {checkSchema} from './checkSchema';
 
 
-class Schema {
+export class Schema {
 
   public readonly schema: Record<string, unknown>;
 
@@ -15,5 +15,3 @@ class Schema {
   }
 
 }
-
-export default Schema;

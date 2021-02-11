@@ -1,5 +1,5 @@
-import createSchema from './createSchema';
-import checkSchema from './checkSchema';
+import {createSchema} from './createSchema';
+import {checkSchema} from './checkSchema';
 declare global {
   interface Object {
     createSchema: any;
@@ -7,7 +7,7 @@ declare global {
   } 
 }
 
-function configPrototype() {
+export function configPrototype() {
   
   Object.prototype.createSchema = function (){
     return createSchema(this);
@@ -18,5 +18,3 @@ function configPrototype() {
   };
 
 }
-
-export default configPrototype;
