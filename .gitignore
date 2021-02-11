@@ -106,4 +106,5 @@ dist
 # other
 .history/
 .vscode/
-test.js
+test.ts
+dist/
