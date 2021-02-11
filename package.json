@@ -4,7 +4,7 @@
   "description": "This package will add to Object prototype two functions Object.prototype.createSchema() and Object.prototype.checkSchema()",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node-dev test.ts",
+    "test": "ts-node-dev --respawn test.ts",
     "prepublish": "tsc"
   },
   "type": "module",
