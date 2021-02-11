@@ -1,10 +1,6 @@
-import createSchema from './createSchema.js';
-import checkSchema from './checkSchema.js';
+import configPrototype from './configPrototype.js';
 
-function config() {
-  Object.prototype.createSchema = createSchema;
-  Object.prototype.checkSchema = checkSchema;
+export {
+  configPrototype,
 
 }
-
-export default config;
