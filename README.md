@@ -23,8 +23,6 @@ if (checkSchema(schema, objectToCheck)) {
   // Your awesome code
 }
 ```
-`createSchema(object)` return object schema.
-`checkSchema(schema, object)` return true or false. If object has the same structure as schema.
 
 ### 2. You can use class
 
@@ -40,14 +38,14 @@ if (schema.check(objectToCheck)) {
 }
 ```
 
-### 3. You can add methods to Object prototype. <span style="color:red"><b>Not recomended method.</b></span>.
+### 3. You can add methods to object prototype. <span style="color:red"><b>Not recomended method</b></span>.
 
 ```javascript
 import { configPrototype } from "isObjectHasCorrectStructure";
 // or
 const { configPrototype } = require("isObjectHasCorrectStructure");
 
-configPrototype();
+configPrototype(); // this function add methods to object prototype
 const schema = objectFromWhichTheSchemaWillBeCreated.createSchema();
 
 if (objectToCheck.checkSchema(schema)) {
@@ -169,7 +167,7 @@ const schema = {
   func: "function",
 }
 
-const obj: any = {
+const obj = {
   hello: "world",
   number: 1,
   nu: null,
@@ -220,7 +218,7 @@ import { Schema as MyName } from "isObjectHasCorrectStructure";
 const MyName = require("isObjectHasCorrectStructure").Schema;
 ```
 
-* The same function is always performed underneath
+* The same functions is always performed underneath
 
 * Package return an object that contain following properties:
 ```javascript
