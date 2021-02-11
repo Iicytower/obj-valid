@@ -2,11 +2,11 @@ import kindOf from 'kind-of';
 
 export default function createSchema() {
   const arrayChecking = (arr) => {
-    // function allSameType(item) {
-    //   return new Set(item.map((x) => typeof x)).size <= 1;
-    // } // Check if all values of array are of the same type
-    // if (!allSameType(arr))
-    //   return new Error("Array can contain only one type of values");
+    function allSameType(item) {
+      return new Set(item.map((x) => typeof x)).size <= 1;
+    } // Check if all values of array are of the same type
+    if (!allSameType(arr))
+      return new Error("Array can contain only one type of values");
 
 
     const value = kindOf(arr[0]);
@@ -35,7 +35,7 @@ export default function createSchema() {
     const res = {};
     for (const prop in obj) {
 
-      if (prop === 'createSchema' || prop === 'checkSchema') break;
+      if(!obj.hasOwnProperty(prop)) break;
       
       const currentType = kindOf(obj[prop]);
       let count = 'idk';
@@ -55,11 +55,9 @@ export default function createSchema() {
           count = currentType;
           break;
       }   
-
-
       res[prop] = count;
     }
-
+    
     return res;
   };
 
