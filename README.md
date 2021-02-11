@@ -2,13 +2,13 @@
 
 This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.
 
-## Instalation
+## Installation
 
 `npm i isObjectHasCorrectStructure` 
 
 ## Usage
 
-You have three way to use it:
+You have three options to use it:
 
 ### 1. You can use functions.
 
@@ -38,14 +38,14 @@ if (schema.check(objectToCheck)) {
 }
 ```
 
-### 3. You can add methods to object prototype. <span style="color:red"><b>Not recomended method</b></span>.
+### 3. You can add methods to object prototype. <span style="color: red;"><b>Not recomended method</b></span>.
 
 ```javascript
 import { configPrototype } from "isObjectHasCorrectStructure";
 // or
 const { configPrototype } = require("isObjectHasCorrectStructure");
 
-configPrototype(); // this function add methods to object prototype
+configPrototype(); // this function adds methods to object prototype
 const schema = objectFromWhichTheSchemaWillBeCreated.createSchema();
 
 if (objectToCheck.checkSchema(schema)) {
@@ -95,7 +95,7 @@ console.log(worldSchema.check(pluton)); // log true
 
 ```
 
-## You can write schema by yourself. Look how schema looks on example object:
+## You can write schema by yourself. Check how schema looks on example object:
 
 ```javascript
 import { checkSchema } from "isObjectHasCorrectStructure";
@@ -190,7 +190,7 @@ const obj = {
       simple: "type",
       arr: [4,5,6],
       insObjArr: [{
-        name: 'Mysz',
+        name: 'Daisy',
         age: 18,
       }]
     },
@@ -200,7 +200,7 @@ const obj = {
     simple: "type",
     arr: [4,5,6],
     insObjArr: [{
-      name: 'Mysz',
+      name: 'Daisy',
       age: 18,
     }]
   },
@@ -218,16 +218,16 @@ import { Schema as MyName } from "isObjectHasCorrectStructure";
 const MyName = require("isObjectHasCorrectStructure").Schema;
 ```
 
-* The same functions is always performed underneath
+* The same functions are always performed underneath regardless of usage option
 
-* Package return an object that contain following properties:
+* Package returns an object that contain following properties:
 ```javascript
 {
-  configPrototype, // this function add createSchema and checkSchema to object prototype
-  Schema, // you can create schema object that contain a check method
-  checkSchema, // this function  return object schema
-  createSchema, // this function return true or fals
+  configPrototype, // this function adds createSchema and checkSchema to object prototype
+  Schema, // this is class on basis of which you can create schema object that contains a check method
+  checkSchema, // this function returns object schema
+  createSchema, // this function returns true or false
 }
 ```
-* If in object you have an array of objects this package don't check is all objects has the same structure. It will be fixed in next versions.
-* If in object you have an multidimensional array this package don't check nested arrays. It will be fixed in next versions.
+* If object contains an array of objects, this package won't check if all objects has the same structure. It will be fixed in next versions.
+* If object contains a multidimensional array, this package won't check nested arrays. It will be fixed in next versions.
