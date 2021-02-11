@@ -1,10 +1,11 @@
-export default function checkSchema(schema: Object) {
+import createSchema from './createSchema';
+
+export default function checkSchema(schema: Object, toCheckObj: Object) {
 
   if(schema instanceof Error){
     console.error(schema);
     return schema;
   } 
-    // @ts-ignore TODO
-  const newSchema = this.createSchema()
+  const newSchema = createSchema(toCheckObj)
   return (JSON.stringify(schema) === JSON.stringify(newSchema));
 };

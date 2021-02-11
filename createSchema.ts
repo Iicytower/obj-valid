@@ -1,6 +1,6 @@
 import kindOf from 'kind-of';
 
-export default function createSchema() {
+export default function createSchema(baseObj: any, ) {
   const arrayChecking = (arr: any[]) => {
     function allSameType(item: any): boolean {
       return new Set(item.map((x: any) => typeof x)).size <= 1;
@@ -17,7 +17,7 @@ export default function createSchema() {
         count = arrayChecking(arr[0])
         break;
       case 'object':
-        count = arr[0].createSchema()
+        count = createSchema(arr[0])
         break;
     
       default:
@@ -48,7 +48,7 @@ export default function createSchema() {
           break;
 
         case 'object':
-          count = obj[prop].createSchema();
+          count = createSchema(obj[prop]);
           break;
 
         default:
@@ -60,6 +60,5 @@ export default function createSchema() {
     
     return res;
   };
-  // @ts-ignore TODO
-  return mainLoop(this);
+  return mainLoop(baseObj);
 }
