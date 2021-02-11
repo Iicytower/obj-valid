@@ -10,7 +10,7 @@ class Schema {
     this.schema = createSchema(baseObj)
   }
 
-  public check(this: any, obj: Record<string, unknown>): boolean | Error{
+  public check(this: Schema, obj: Record<string, unknown>): boolean | Error{
     return checkSchema(this.schema, obj)
   }
 
