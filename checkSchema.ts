@@ -1,6 +1,6 @@
 import createSchema from './createSchema';
 
-export default function checkSchema(schema: Object, toCheckObj: Object) {
+export default function checkSchema(schema: Record<string, unknown>, toCheckObj: Record<string, unknown>) {
 
   if(schema instanceof Error){
     console.error(schema);

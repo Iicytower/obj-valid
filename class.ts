@@ -4,12 +4,14 @@ import checkSchema from './checkSchema';
 
 class Schema {
 
-  constructor(public readonly obj: Object ){
-    createSchema(obj)
+  public readonly schema: Record<string, unknown>;
+
+  constructor(baseObj: Record<string, unknown> ){
+    this.schema = createSchema(baseObj)
   }
 
-  public check(this: any, obj: Object): boolean | Error{
-    return checkSchema(this, obj)
+  public check(this: any, obj: Record<string, unknown>): boolean | Error{
+    return checkSchema(this.schema, obj)
   }
 
 }
