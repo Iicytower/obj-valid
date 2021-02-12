@@ -1,16 +1,16 @@
 import kindOf from 'kind-of';
 
-export function createSchema(baseObj: any, ) {
+export function createSchema(baseObj: Object, ) {
 
   const arrayChecking = (arr: any[]): string | Object | Error => {
     function allSameType(item: any): boolean {
-      return new Set(item.map((x: any) => typeof x)).size <= 1;
+      return new Set(item.map((x: any) => kindOf(x))).size <= 1;
     } // Check if all values of array are of the same type
     if (!allSameType(arr)){
       return new Error("Array can contain only one type of values");
     }
 
-    const value = kindOf(arr[0]);
+    const value: string = kindOf(arr[0]);
     let count: string | Object | Error = "idk";
 
     switch (value) {

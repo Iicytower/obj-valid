@@ -1,10 +1,16 @@
-# objectValidation
+# obj-valid
 
 This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.
 
+Please send me feedback or maybe you have any idea to add new functionality to this package.
+
 ## Installation
 
-`npm i objectValidation` 
+`npm i obj-valid` or download it directly from git repository `https://github.com/Iicytower/obj-valid`
+
+## Why you should use it?
+
+This package is very fast, simple to use, it has only one dependency to package without dependencies. It works in browser and in node. You can write schema by yourself or `createSchema` function can create it for you. If you have any idea how to improve it or what to add, send me an e-mail.
 
 ## Usage
 
@@ -13,51 +19,54 @@ You have three options to use it:
 ### 1. You can use functions.
 
 ```javascript
-import { createSchema, checkSchema } from "objectValidation";
+import { createSchema, checkSchema } from "obj-valid";
 // or
-const { createSchema, checkSchema } = require("objectValidation");
+const { createSchema, checkSchema } = require("obj-valid");
 
 const schema = createSchema(objectFromWhichTheSchemaWillBeCreated);
 
-if (checkSchema(schema, objectToCheck)) {
-  // Your awesome code
+if (!checkSchema(schema, objectToCheck)) {
+  return new Error()
 }
+  // Your awesome code
 ```
 
 ### 2. You can use class
 
 ```javascript
-import { Schema } from "objectValidation";
+import { Schema } from "obj-valid";
 // or
-const { Schema } = require("objectValidation");
+const { Schema } = require("obj-valid");
 
 const schema = new Schema(objectFromWhichTheSchemaWillBeCreated);
 
-if (schema.check(objectToCheck)) {
-  // Your awesome code
+if (!schema.check(objectToCheck)) {
+  return new Error()
 }
+  // Your awesome code
 ```
 
 ### 3. You can add methods to object prototype. <span style="color: red;"><b>Not recomended method</b></span>.
 
 ```javascript
-import { configPrototype } from "objectValidation";
+import { configPrototype } from "obj-valid";
 // or
-const { configPrototype } = require("objectValidation");
+const { configPrototype } = require("obj-valid");
 
 configPrototype(); // this function adds methods to object prototype
 const schema = objectFromWhichTheSchemaWillBeCreated.createSchema();
 
-if (objectToCheck.checkSchema(schema)) {
-  // Your awesome code
+if (!objectToCheck.checkSchema(schema)) {
+  return new Error()
 }
+  // Your awesome code
 ```
 If you use this method you can't use "createSchema" and "checkSchema" as property name.
 
 ## Example
 
 ```javascript
-import  { Schema  as ObjStructure } from "objectValidation";
+import  { Schema  as ObjStructure } from "obj-valid";
 
 const earth = {
   hello: "Earth",
@@ -98,7 +107,7 @@ console.log(worldSchema.check(pluton)); // log true
 ## You can write schema by yourself. Check how schema looks on example object:
 
 ```javascript
-import { checkSchema } from "objectValidation";
+import { checkSchema } from "obj-valid";
 
 const schema = {
   hello: "string",
@@ -213,9 +222,9 @@ console.log(checkSchema(schema, check)) // log true
 
 * Remember you can use:
 ```javascript
-import { Schema as MyName } from "objectValidation";
+import { Schema as MyName } from "obj-valid";
 // or
-const MyName = require("objectValidation").Schema;
+const MyName = require("obj-valid").Schema;
 ```
 
 * The same functions are always performed underneath regardless of usage option
@@ -231,3 +240,4 @@ const MyName = require("objectValidation").Schema;
 ```
 * If object contains an array of objects, this package won't check if all objects has the same structure. It will be fixed in next versions.
 * If object contains a multidimensional array, this package won't check nested arrays. It will be fixed in next versions.
+* In next versions will be added comfortable use for validate on routes.

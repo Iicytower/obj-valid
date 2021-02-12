@@ -1,23 +1,32 @@
 {
-  "name": "isobjecthascorrectstructure",
-  "version": "0.0.1",
-  "description": "This package will add to Object prototype two functions Object.prototype.createSchema() and Object.prototype.checkSchema()",
-  "main": "index.js",
+  "name": "obj-valid",
+  "version": "0.1.0",
+  "description": "This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.",
+  "main": "./dist/index.js",
   "scripts": {
     "test": "ts-node-dev --respawn test.ts",
     "prepublish": "tsc"
   },
-  "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Iicytower/isObjectHasCorrectStructure.git"
+    "url": "git+https://github.com/Iicytower/obj-valid.git"
   },
   "author": "Iicytower",
   "license": "ISC",
+  "keywords":[
+    "does",
+    "object",
+    "has",
+    "correct",
+    "structure",
+    "schema",
+    "validation",
+    "draft"
+  ],
   "bugs": {
-    "url": "https://github.com/Iicytower/isObjectHasCorrectStructure/issues"
+    "url": "https://github.com/Iicytower/obj-valid/issues"
   },
-  "homepage": "https://github.com/Iicytower/isObjectHasCorrectStructure#readme",
+  "homepage": "https://github.com/Iicytower/obj-valid#readme",
   "dependencies": {
     "kind-of": "^6.0.3"
   },
