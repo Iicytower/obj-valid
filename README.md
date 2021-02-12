@@ -1,10 +1,10 @@
-# isObjectHasCorrectStructure
+# objectValidation
 
 This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.
 
 ## Installation
 
-`npm i isObjectHasCorrectStructure` 
+`npm i objectValidation` 
 
 ## Usage
 
@@ -13,9 +13,9 @@ You have three options to use it:
 ### 1. You can use functions.
 
 ```javascript
-import { createSchema, checkSchema } from "isObjectHasCorrectStructure";
+import { createSchema, checkSchema } from "objectValidation";
 // or
-const { createSchema, checkSchema } = require("isObjectHasCorrectStructure");
+const { createSchema, checkSchema } = require("objectValidation");
 
 const schema = createSchema(objectFromWhichTheSchemaWillBeCreated);
 
@@ -27,9 +27,9 @@ if (checkSchema(schema, objectToCheck)) {
 ### 2. You can use class
 
 ```javascript
-import { Schema } from "isObjectHasCorrectStructure";
+import { Schema } from "objectValidation";
 // or
-const { Schema } = require("isObjectHasCorrectStructure");
+const { Schema } = require("objectValidation");
 
 const schema = new Schema(objectFromWhichTheSchemaWillBeCreated);
 
@@ -41,9 +41,9 @@ if (schema.check(objectToCheck)) {
 ### 3. You can add methods to object prototype. <span style="color: red;"><b>Not recomended method</b></span>.
 
 ```javascript
-import { configPrototype } from "isObjectHasCorrectStructure";
+import { configPrototype } from "objectValidation";
 // or
-const { configPrototype } = require("isObjectHasCorrectStructure");
+const { configPrototype } = require("objectValidation");
 
 configPrototype(); // this function adds methods to object prototype
 const schema = objectFromWhichTheSchemaWillBeCreated.createSchema();
@@ -57,7 +57,7 @@ If you use this method you can't use "createSchema" and "checkSchema" as propert
 ## Example
 
 ```javascript
-import  { Schema  as ObjStructure } from "isObjectHasCorrectStructure";
+import  { Schema  as ObjStructure } from "objectValidation";
 
 const earth = {
   hello: "Earth",
@@ -98,7 +98,7 @@ console.log(worldSchema.check(pluton)); // log true
 ## You can write schema by yourself. Check how schema looks on example object:
 
 ```javascript
-import { checkSchema } from "isObjectHasCorrectStructure";
+import { checkSchema } from "objectValidation";
 
 const schema = {
   hello: "string",
@@ -213,9 +213,9 @@ console.log(checkSchema(schema, check)) // log true
 
 * Remember you can use:
 ```javascript
-import { Schema as MyName } from "isObjectHasCorrectStructure";
+import { Schema as MyName } from "objectValidation";
 // or
-const MyName = require("isObjectHasCorrectStructure").Schema;
+const MyName = require("objectValidation").Schema;
 ```
 
 * The same functions are always performed underneath regardless of usage option
