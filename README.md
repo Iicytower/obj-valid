@@ -1,12 +1,12 @@
 # obj-valid
 
-This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.
+This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in plain javascript you can use this package.
 
 Please send me feedback or maybe you have any idea to add new functionality to this package.
 
 ## Installation
 
-`npm i obj-valid` or download it directly from git repository `https://github.com/Iicytower/obj-valid`
+Run `npm i obj-valid` or download it directly from git repository `https://github.com/Iicytower/obj-valid`
 
 ## Why you should use it?
 
@@ -14,7 +14,7 @@ This package is very fast, simple to use, it has only one dependency to package 
 
 ## Usage
 
-You have three options to use it:
+You have three ways to use it:
 
 ### 1. You can use functions.
 
@@ -46,7 +46,7 @@ if (!schema.check(objectToCheck)) {
   // Your awesome code
 ```
 
-### 3. You can add methods to object prototype. <span style="color: red;"><b>Not recomended method</b></span>.
+### 3. You can add methods to object prototype. <span style="color: red;"><b>This method is not recomended!</b></span>
 
 ```javascript
 import { configPrototype } from "obj-valid";
@@ -233,11 +233,11 @@ const MyName = require("obj-valid").Schema;
 ```javascript
 {
   configPrototype, // this function adds createSchema and checkSchema to object prototype
-  Schema, // this is class on basis of which you can create schema object that contains a check method
+  Schema, // this is the class basing of which you can create schema object that contains a check method
   checkSchema, // this function returns object schema
   createSchema, // this function returns true or false
 }
 ```
 * If object contains an array of objects, this package won't check if all objects has the same structure. It will be fixed in next versions.
 * If object contains a multidimensional array, this package won't check nested arrays. It will be fixed in next versions.
-* In next versions will be added comfortable use for validate on routes.
+* The more convenient use for validate on routes will be added in next versions.
