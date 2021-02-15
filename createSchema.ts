@@ -2,6 +2,25 @@ import kindOf from 'kind-of';
 
 export function createSchema(baseObj: Object, ) {
 
+  const typeCheck = (value: any) => { //TODO type
+
+    const currentType: string = kindOf(value);
+
+    switch (currentType) {
+      case 'array':
+        return arrayChecking(value);
+        break;
+
+      case 'object':
+        return createSchema(value);
+        break;
+
+      default:
+        return currentType;
+        break;
+    }   
+  }
+
   const arrayChecking = (arr: any[]): string | Object | Error => {
     function allSameType(item: any): boolean {
       return new Set(item.map((x: any) => kindOf(x))).size <= 1;
@@ -10,25 +29,9 @@ export function createSchema(baseObj: Object, ) {
       return new Error("Array can contain only one type of values");
     }
 
-    const value: string = kindOf(arr[0]);
-
-    let count: string | Object = "idk";
-    switch (value) {
-      case 'array':
-        count = arrayChecking(arr[0])
-        break;
-      case 'object':
-        count = createSchema(arr[0])
-        break;
-    
-      default:
-        count = value;
-        break;
-    }
-
     return {
       type: "array",
-      value: count,
+      value: typeCheck(arr[0]),
     };
   };
 
@@ -38,23 +41,7 @@ export function createSchema(baseObj: Object, ) {
 
       if(!obj.hasOwnProperty(prop)) break;
       
-      const currentType: string | Object = kindOf(obj[prop]);
-      
-      let count: string | Object = 'idk';
-      switch (currentType) {
-        case 'array':
-          count = arrayChecking(obj[prop]);
-          break;
-
-        case 'object':
-          count = createSchema(obj[prop]);
-          break;
-
-        default:
-          count = currentType;
-          break;
-      }   
-      res[prop] = count;
+      res[prop] = typeCheck(obj[prop]);
     }
     
     return res;
