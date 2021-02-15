@@ -27,9 +27,5 @@ jobs:
         run: ls -la ./dist
       - name: 🚀 Publish
         run: npm publish --access public
-      - name: checkto
-        run: ls -la
-      - name: checkdt
-        run: ls -la ./dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
