@@ -11,8 +11,8 @@ export function createSchema(baseObj: Object, ) {
     }
 
     const value: string = kindOf(arr[0]);
-    let count: string | Object | Error = "idk";
 
+    let count: string | Object = "idk";
     switch (value) {
       case 'array':
         count = arrayChecking(arr[0])
@@ -39,10 +39,8 @@ export function createSchema(baseObj: Object, ) {
       if(!obj.hasOwnProperty(prop)) break;
       
       const currentType: string | Object = kindOf(obj[prop]);
+      
       let count: string | Object = 'idk';
-
-      if (currentType instanceof Error) return currentType;
-
       switch (currentType) {
         case 'array':
           count = arrayChecking(obj[prop]);
