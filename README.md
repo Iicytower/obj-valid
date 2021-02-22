@@ -238,6 +238,5 @@ const MyName = require("obj-valid").Schema;
   createSchema, // this function returns true or false
 }
 ```
-* If object contains an array of objects, this package won't check if all objects has the same structure. It will be fixed in next versions.
-* If object contains a multidimensional array, this package won't check nested arrays. It will be fixed in next versions.
+
 * The more convenient use for validate on routes will be added in next versions.
