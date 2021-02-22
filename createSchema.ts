@@ -30,7 +30,6 @@ export function createSchema(baseObj: Record<string, unknown>): Record<string, u
         const type = JSON.stringify(typeCheck(arr[0]));
 
         const result = arr.reduce((acc, el) => {
-
           if (JSON.stringify(typeCheck(el)) !== type) acc = false
           return acc;
         }, true);
