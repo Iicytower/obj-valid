@@ -234,8 +234,8 @@ const MyName = require("obj-valid").Schema;
 {
   configPrototype, // this function adds createSchema and checkSchema to object prototype
   Schema, // this is the class basing of which you can create schema object that contains a check method
-  checkSchema, // this function returns object schema
-  createSchema, // this function returns true or false
+  checkSchema, // this function returns true or false
+  createSchema, // this function returns object schema
 }
 ```
 
