@@ -9,11 +9,12 @@ declare global {
 
 export function configPrototype() {
   
-  Object.prototype.createSchema = function (): Object | Error{
+  Object.prototype.createSchema = function (): Record<string, unknown>{
+    // @ts-ignore
     return createSchema(this);
   };
 
-  Object.prototype.checkSchema = function (schema: Record<string, unknown>): boolean | Error{
+  Object.prototype.checkSchema = function (schema: Record<string, unknown>): boolean{
     return checkSchema(schema, this);
   };
 

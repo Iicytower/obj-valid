@@ -4,7 +4,7 @@
   "description": "This package can check is your object has correct structure without using typescript. As you know after transpilation interfaces disappear. If you want to check object structure on production or in clean javascript you can use this package.",
   "main": "./dist/index.js",
   "scripts": {
-    "test": "ts-node-dev --respawn test.ts",
+    "start:dev": "ts-node-dev --respawn test.ts",
     "build": "tsc",
     "prepublish": "npm run build",
     "prepack": "tsc"
