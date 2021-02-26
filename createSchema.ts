@@ -29,7 +29,7 @@ export function createSchema(baseObj: Record<string, unknown>): Record<string, u
 
         const type = JSON.stringify(typeCheck(arr[0]));
 
-        const result = arr.reduce((acc, el) => {
+        const result = arr.reduce((acc, el): boolean => {
           if (JSON.stringify(typeCheck(el)) !== type) acc = false
           return acc;
         }, true);
@@ -48,7 +48,7 @@ export function createSchema(baseObj: Record<string, unknown>): Record<string, u
     };
 
     const mainLoop = (obj: Record<string, unknown>): Record<string, unknown> => {
-      const res: any = {};
+      const res: Record<string, unknown> = {};
       for (const prop in obj) {
 
         if (!obj.hasOwnProperty(prop)) break;

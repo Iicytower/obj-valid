@@ -10,7 +10,7 @@ Run `npm i obj-valid` or download it directly from git repository `https://githu
 
 ## Why you should use it?
 
-This package is very fast, simple to use, it has only one dependency to package without dependencies. It works in browser and in node. You can write schema by yourself or `createSchema` function can create it for you. If you have any idea how to improve it or what to add, send me an e-mail.
+This package is very fast, simple to use, it has only one dependency to package without dependencies. You can write schema by yourself or `createSchema` function can create it for you. If you have any idea how to improve it or what to add, send me an e-mail.
 
 ## Usage
 
