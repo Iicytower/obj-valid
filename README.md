@@ -46,6 +46,19 @@ if (!schema.check(objectToCheck)) {
   // Your awesome code
 ```
 
+also you can out into constructor your own schema:
+
+```javascript
+
+const schema = new Schema(yourOwnSchema, true);
+
+if (!schema.check(objectToCheck)) {
+  return new Error()
+}
+  // Your awesome code
+```
+If second argument is true(default false) `schema` object will be created directly from object in first argument,
+
 ### 3. You can add methods to object prototype. <span style="color: red;"><b>This method is not recomended!</b></span>
 
 ```javascript
