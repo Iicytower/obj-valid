@@ -1,5 +1,6 @@
 import { createSchema } from './createSchema';
 import { checkSchema } from './checkSchema';
+import { CompareResult } from "./interfaces";
 
 
 export class Schema {
@@ -12,7 +13,7 @@ export class Schema {
     else this.schema = createSchema(baseObj)
   }
 
-  public check(this: Schema, obj: Record<string, unknown>): boolean {
+  public check(this: Schema, obj: Record<string, unknown>): CompareResult {
     return checkSchema(this.schema, obj)
   }
 

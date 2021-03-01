@@ -1,4 +1,6 @@
 import kindOf from 'kind-of';
+import { compare } from './compare';
+
 
 export function createSchema(baseObj: Record<string, unknown>): Record<string, unknown> {
 

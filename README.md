@@ -25,7 +25,7 @@ const { createSchema, checkSchema } = require("obj-valid");
 
 const schema = createSchema(objectFromWhichTheSchemaWillBeCreated);
 
-if (!checkSchema(schema, objectToCheck)) {
+if (!checkSchema(schema, objectToCheck).score) {
   return new Error()
 }
   // Your awesome code
@@ -40,7 +40,7 @@ const { Schema } = require("obj-valid");
 
 const schema = new Schema(objectFromWhichTheSchemaWillBeCreated);
 
-if (!schema.check(objectToCheck)) {
+if (!schema.check(objectToCheck).score) {
   return new Error()
 }
   // Your awesome code
@@ -52,7 +52,7 @@ also you can out into constructor your own schema:
 
 const schema = new Schema(yourOwnSchema, true);
 
-if (!schema.check(objectToCheck)) {
+if (!schema.check(objectToCheck).score) {
   return new Error()
 }
   // Your awesome code
@@ -69,7 +69,7 @@ const { configPrototype } = require("obj-valid");
 configPrototype(); // this function adds methods to object prototype
 const schema = objectFromWhichTheSchemaWillBeCreated.createSchema();
 
-if (!objectToCheck.checkSchema(schema)) {
+if (!objectToCheck.checkSchema(schema).score) {
   return new Error()
 }
   // Your awesome code
@@ -107,13 +107,13 @@ const jupiter = {
 const earthSchema = new ObjStructure(earth);
 const worldSchema = new ObjStructure(world);
 
-console.log(earthSchema.check(venus)) // log true
-console.log(earthSchema.check(world)); // log false
-console.log(earthSchema.check(jupiter)); // log false
-console.log(worldSchema.check(jupiter)); // log false
-console.log(worldSchema.check(earth)); // log false
-console.log(worldSchema.check(venus)); // log false
-console.log(worldSchema.check(pluton)); // log true
+console.log(earthSchema.check(venus).score) // log true
+console.log(earthSchema.check(world).score); // log false
+console.log(earthSchema.check(jupiter).score); // log false
+console.log(worldSchema.check(jupiter).score); // log false
+console.log(worldSchema.check(earth).score); // log false
+console.log(worldSchema.check(venus).score); // log false
+console.log(worldSchema.check(pluton).score); // log true
 
 ```
 
@@ -228,7 +228,7 @@ const obj = {
   },
   func: () => 'value',
 }
-console.log(checkSchema(schema, check)) // log true
+console.log(checkSchema(schema, check).score) // log true
 ```
 
 ## Additional remarks
@@ -241,6 +241,14 @@ const MyName = require("obj-valid").Schema;
 ```
 
 * The same functions are always performed underneath regardless of usage option
+
+* `checkSchema` return an object:
+```javascript
+{
+  score: false, // this property say is object fits schema
+  wrongProperties: [], // this is an array contain strings with not matching properties
+}
+```
 
 * Package returns an object that contain following properties:
 ```javascript
