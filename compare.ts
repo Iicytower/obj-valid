@@ -1,30 +1,35 @@
 import kindOf from 'kind-of';
-import { CompareResult }from './interfaces';
+import { CompareResult } from './interfaces';
 
 
 export const compare = (obj1: Record<string, any>, obj2: Record<string, any>): CompareResult => {
+
+  // function taken from https://javascript.plainenglish.io/4-ways-to-compare-objects-in-javascript-97fe9b2a949c
+
   let result: CompareResult = {
     score: true,
     wrongProperties: [],
   };
 
-  for (const key in obj1) {
-    if (!Object.prototype.hasOwnProperty.call(obj1, key)) continue;
-      if(kindOf(obj1[key]) === 'object'){
+  const props1: string[] = Object.getOwnPropertyNames(obj1);
+  const props2: string[] = Object.getOwnPropertyNames(obj2);
 
-        if(!compare(obj1[key], obj2[key]).score) {
-          result.score = false;
-          result.wrongProperties.push(String(key));
-        }
+  if (props1.length != props2.length) {
+    result.score = false;
+    return result;
+  }
 
-      }else{
+  for (let i = 0; i < props1.length; i++) {
+    const prop = props1[i];
+    const bothAreObjects: boolean = (kindOf(obj1[prop]) === 'object' && kindOf(obj2[prop]) === 'object');
 
-        if(obj1[key] !== obj2[key]) {
-          result.score = false;
-          result.wrongProperties.push(String(key));
-        }
-
-      }
+    if (
+      (!bothAreObjects && (obj1[prop] !== obj2[prop])) ||
+      (bothAreObjects && !compare(obj1[prop], obj2[prop]).score)
+    ) {
+      result.score = false;
+      result.wrongProperties.push(prop);
+    }
   }
   return result;
 };

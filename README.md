@@ -245,10 +245,11 @@ const MyName = require("obj-valid").Schema;
 * `checkSchema` return an object:
 ```javascript
 {
-  score: false, // this property say is object fits schema
+  score: true, // this property say is object fits schema
   wrongProperties: [], // this is an array contain strings with not matching properties
 }
 ```
+If `score` is `false` and `wrongProperties` is empty array it means count of properties object and schema is different.
 
 * Package returns an object that contain following properties:
 ```javascript
