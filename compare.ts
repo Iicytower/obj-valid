@@ -4,7 +4,7 @@ import { CompareResult } from './interfaces';
 
 export const compare = (obj1: Record<string, any>, obj2: Record<string, any>): CompareResult => {
 
-  // function taken from https://javascript.plainenglish.io/4-ways-to-compare-objects-in-javascript-97fe9b2a949c
+  // function basis taken from https://javascript.plainenglish.io/4-ways-to-compare-objects-in-javascript-97fe9b2a949c
 
   let result: CompareResult = {
     score: true,
@@ -28,6 +28,9 @@ export const compare = (obj1: Record<string, any>, obj2: Record<string, any>): C
     ) {
       if(obj1.type === 'array' && obj1.value === 'any'){
         obj1.value = obj2.value;
+      }
+      if(obj2.type === 'array' && obj2.value === 'any'){
+        obj2.value = obj1.value;
       }
     }
 

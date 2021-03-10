@@ -251,13 +251,15 @@ const MyName = require("obj-valid").Schema;
 ```
 If `score` is `false` and `wrongProperties` is empty array it means count of properties object and schema is different.
 
+* There is possible to type `any` in arrays. If in based object is an empty array, all values will be correct. The other way around. If in the object to be checked is an empty array all values will be correct.
+
 * Package returns an object that contain following properties:
 ```javascript
 {
-  configPrototype, // this function adds createSchema and checkSchema to object prototype
-  Schema, // this is the class basing of which you can create schema object that contains a check method
-  checkSchema, // this function returns true or false
-  createSchema, // this function returns object schema
+  configPrototype,
+  Schema,
+  checkSchema,
+  createSchema,
 }
 ```
 
