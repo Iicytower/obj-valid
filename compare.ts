@@ -8,7 +8,7 @@ export const compare = (obj1: Record<string, any>, obj2: Record<string, any>): C
     wrongProperties: [],
   };
   for (const key in obj1) {
-    if (!obj1.hasOwnProperty(key)) break;
+    if (!Object.prototype.hasOwnProperty.call(obj1, key)) continue;
       if(kindOf(obj1[key]) === 'object'){
         if(!compare(obj1[key], obj2[key])) {
           result.score = false;
