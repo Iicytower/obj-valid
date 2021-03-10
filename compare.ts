@@ -21,6 +21,16 @@ export const compare = (obj1: Record<string, any>, obj2: Record<string, any>): C
 
   for (let i = 0; i < props1.length; i++) {
     const prop = props1[i];
+
+    if (
+      (props1[0] === "type" && props1[1] === "value") &&
+      (props2[0] === "type" && props2[1] === "value")
+    ) {
+      if(obj1.type === 'array' && obj1.value === 'any'){
+        obj1.value = obj2.value;
+      }
+    }
+
     const bothAreObjects: boolean = (kindOf(obj1[prop]) === 'object' && kindOf(obj2[prop]) === 'object');
 
     if (

@@ -27,6 +27,11 @@ export function createSchema(baseObj: Record<string, unknown>): Record<string, u
 
     const arrayChecking = (arr: any[]): string | Record<string, unknown> => {
 
+      if(arr.length === 0) return {
+        type: "array",
+        value: "any",
+      };
+
       function allSameType(arr: any[]): boolean {
 
         const type = JSON.stringify(typeCheck(arr[0]));
