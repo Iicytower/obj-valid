@@ -1,58 +1,12 @@
 import kindOf from 'kind-of';
-import { compare } from './compare';
-
+import { allSameType } from './helpers/allSameType';
+import { typeCheck } from "./helpers/typeCheck";
+import { arrayChecking } from "./helpers/arrayChecking";
 
 export function createSchema(baseObj: Record<string, unknown>): Record<string, unknown> {
 
   try {
 
-    const typeCheck = (value: any): string | Record<string, unknown> => {
-
-      const currentType: string = kindOf(value);
-
-      switch (currentType) {
-        case 'array':
-          return arrayChecking(value);
-          break;
-
-        case 'object':
-          return createSchema(value);
-          break;
-
-        default:
-          return currentType;
-          break;
-      }
-    }
-
-    const arrayChecking = (arr: any[]): string | Record<string, unknown> => {
-
-      if(arr.length === 0) return {
-        type: "array",
-        value: "any",
-      };
-
-      function allSameType(arr: any[]): boolean {
-
-        const type = JSON.stringify(typeCheck(arr[0]));
-
-        const result = arr.reduce((acc, el): boolean => {
-          if (JSON.stringify(typeCheck(el)) !== type) acc = false
-          return acc;
-        }, true);
-        return result;
-      } // Check if all values of array are of the same type
-
-      if (!allSameType(arr)) {
-
-        throw new Error("Array can contain only one type of values");
-      }
-
-      return {
-        type: "array",
-        value: typeCheck(arr[0]),
-      };
-    };
 
     const mainLoop = (obj: Record<string, unknown>): Record<string, unknown> => {
       const res: Record<string, unknown> = {};
