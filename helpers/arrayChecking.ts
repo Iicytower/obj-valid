@@ -7,8 +7,7 @@ export function arrayChecking (arr: any[]): string | Record<string, unknown> {
     type: "array",
     value: "any",
   };
-
-
+  
   if (!allSameType(arr)) {
     throw new Error("Array can contain only one type of values");
   }
