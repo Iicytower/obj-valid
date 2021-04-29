@@ -1,4 +1,4 @@
 export interface CompareResult {
-  score: boolean,
-  wrongProperties: string[],
+  score: boolean;
+  wrongProperties: string[];
 }

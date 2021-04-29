@@ -59,7 +59,7 @@ if (!schema.check(objectToCheck).score) {
 ```
 If second argument is true(default false) `schema` object will be created directly from object in first argument,
 
-### 3. You can add methods to object prototype. <span style="color: red;"><b>This method is not recomended!</b></span>
+### 3. You can add methods to object prototype. <span style="color: red;">This method is not recomended!</span>
 
 ```javascript
 import { configPrototype } from "obj-valid";
@@ -76,7 +76,7 @@ if (!objectToCheck.checkSchema(schema).score) {
 ```
 If you use this method you can't use "createSchema" and "checkSchema" as property name.
 
-## Example
+#### Example
 
 ```javascript
 import  { Schema  as ObjStructure } from "obj-valid";
@@ -231,6 +231,28 @@ const obj = {
 console.log(checkSchema(schema, check).score) // log true
 ```
 
+## Not required properties
+
+In schema object you can add property `notRequireProperties`. It should Be an array of strings. Properties whose names are contained in the array are not required. 
+
+Example:
+```javascript
+  const schema = {
+    notRequireProperties: ['name'],
+    name: 'string',
+    age: 'number',
+    choclate: 'string',
+  };
+  const obj = {
+    age: 80,
+    choclate: 'only milk'
+  }
+
+  console.log(checkSchema(schema, obj).score); //log true
+
+```
+You can use this feature in nested objects.
+
 ## Additional remarks
 
 * Remember you can use:
@@ -249,7 +271,6 @@ const MyName = require("obj-valid").Schema;
   wrongProperties: [], // this is an array contain strings with not matching properties
 }
 ```
-If `score` is `false` and `wrongProperties` is empty array it means count of properties object and schema is different.
 
 * There is possible to type `any` in arrays. If in based object is an empty array, all values will be correct. The other way around. If in the object to be checked is an empty array all values will be correct.
 
@@ -262,5 +283,3 @@ If `score` is `false` and `wrongProperties` is empty array it means count of pro
   createSchema,
 }
 ```
-
-* The more convenient use for validate on routes will be added in next versions.
