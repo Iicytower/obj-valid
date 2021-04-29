@@ -108,4 +108,3 @@ dist
 .vscode/
 test.ts
 dist/
-.prettierrc

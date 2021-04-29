@@ -6,6 +6,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "start:dev": "ts-node-dev --respawn test.ts",
+    "formater": "prettier -w ./**/*.ts",
+    "formaterCheck": "prettier --check ./**/*.ts",
     "build": "tsc"
   },
   "repository": {
