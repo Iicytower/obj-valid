@@ -20,9 +20,7 @@ export const compare = (
   const doesNotRequirePropertiesExist: boolean = schema.hasOwnProperty(
     'notRequireProperties',
   );
-  /*
-    check is this property is an array of strings.
-  */
+
   if (doesNotRequirePropertiesExist) {
     if (!Array.isArray(schema.notRequireProperties)) {
       return notRequirePropertiesProblemResult;
@@ -37,14 +35,17 @@ export const compare = (
   const props1: string[] = Object.getOwnPropertyNames(schema);
   const props2: string[] = Object.getOwnPropertyNames(newSchema);
 
-  // if (props1.length != props2.length) {
-  //   result.score = false;
-  //   return result;
-  // }
-
   for (let i = 0; i < props1.length; i++) {
     const prop = props1[i];
     if (prop === 'notRequireProperties') continue;
+
+    if (
+      doesNotRequirePropertiesExist &&
+      props2.indexOf(prop) === -1 &&
+      schema.notRequireProperties.indexOf(prop) !== -1
+    ) {
+      continue;
+    }
 
     if (
       props1[0] === 'type' &&
@@ -67,12 +68,6 @@ export const compare = (
       (!bothAreObjects && schema[prop] !== newSchema[prop]) ||
       (bothAreObjects && !compare(schema[prop], newSchema[prop]).score)
     ) {
-      if (
-        doesNotRequirePropertiesExist &&
-        schema.notRequireProperties.indexOf(prop) !== -1
-      ) {
-        continue;
-      }
       result.score = false;
       result.wrongProperties.push(prop);
     }
